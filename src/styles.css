@@ -6,3 +6,7 @@
 .ButtonStyle {
   width: 40px;
 }
+
+.isCompleted {
+  text-decoration: line-through;
+}

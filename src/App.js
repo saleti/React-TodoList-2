@@ -6,13 +6,22 @@ export default function App() {
   const [newItem, setNewItem] = useState("");
   const [todoList, setTodoList] = useState([]);
 
+  const handleItemClick = index => {
+    const todos = [...todoList];
+    console.log(index);
+    console.log(todos);
+    todos[index].isCompleted = true;
+    setTodoList(todos);
+  };
+
   const handleSubmit = function(e) {
     e.preventDefault();
     if (newItem.length === 0) return;
 
     const newInput = {
       text: newItem,
-      id: Date.now()
+      id: Date.now(),
+      isCompleted: false
     };
     setTodoList(todoList => [...todoList, newInput]);
     setNewItem("");
@@ -31,7 +40,7 @@ export default function App() {
         />
         <button>Add item</button>
       </form>
-      <TodoList items={todoList} />
+      <TodoList handleItemClick={handleItemClick} items={todoList} />
     </>
   );
 }
